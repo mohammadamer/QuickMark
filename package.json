@@ -1,0 +1,349 @@
+{
+  "name": "quickmark",
+  "displayName": "QuickMark",
+  "description": "Bookmark manager for VS Code — store, organize, and share project bookmarks (files & URLs) with your team, right from the editor.",
+  "version": "0.1.0",
+  "publisher": "quickmark",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "bookmarks",
+    "links",
+    "quickmark",
+    "team",
+    "productivity"
+  ],
+  "icon": "media/icon.png",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "quickmark",
+          "title": "QuickMark",
+          "icon": "media/quickmark.svg"
+        }
+      ]
+    },
+    "views": {
+      "quickmark": [
+        {
+          "id": "quickmark.personalBookmarks",
+          "name": "Personal Bookmarks"
+        },
+        {
+          "id": "quickmark.teamBookmarks",
+          "name": "Team Bookmarks"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "quickmark.addBookmark",
+        "title": "Add Bookmark",
+        "category": "QuickMark",
+        "icon": "$(add)"
+      },
+      {
+        "command": "quickmark.addPersonalBookmark",
+        "title": "Add Personal Bookmark",
+        "category": "QuickMark",
+        "icon": "$(add)"
+      },
+      {
+        "command": "quickmark.addTeamBookmark",
+        "title": "Add Team Bookmark",
+        "category": "QuickMark",
+        "icon": "$(add)"
+      },
+      {
+        "command": "quickmark.addBookmarkFromExplorer",
+        "title": "Add to QuickMark",
+        "category": "QuickMark"
+      },
+      {
+        "command": "quickmark.removeBookmark",
+        "title": "Remove Bookmark",
+        "category": "QuickMark",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "quickmark.editBookmark",
+        "title": "Edit Bookmark",
+        "category": "QuickMark",
+        "icon": "$(edit)"
+      },
+      {
+        "command": "quickmark.openBookmark",
+        "title": "Open Bookmark",
+        "category": "QuickMark",
+        "icon": "$(link-external)"
+      },
+      {
+        "command": "quickmark.createGroup",
+        "title": "Create Group",
+        "category": "QuickMark",
+        "icon": "$(new-folder)"
+      },
+      {
+        "command": "quickmark.createPersonalGroup",
+        "title": "Create Personal Group",
+        "category": "QuickMark",
+        "icon": "$(new-folder)"
+      },
+      {
+        "command": "quickmark.createTeamGroup",
+        "title": "Create Team Group",
+        "category": "QuickMark",
+        "icon": "$(new-folder)"
+      },
+      {
+        "command": "quickmark.removeGroup",
+        "title": "Remove Group",
+        "category": "QuickMark",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "quickmark.renameGroup",
+        "title": "Rename Group",
+        "category": "QuickMark",
+        "icon": "$(edit)"
+      },
+      {
+        "command": "quickmark.searchBookmarks",
+        "title": "Search Bookmarks",
+        "category": "QuickMark",
+        "icon": "$(search)"
+      },
+      {
+        "command": "quickmark.refreshPersonal",
+        "title": "Refresh Personal Bookmarks",
+        "category": "QuickMark",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "quickmark.refreshTeam",
+        "title": "Refresh Team Bookmarks",
+        "category": "QuickMark",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "quickmark.moveToPersonal",
+        "title": "Move to Personal",
+        "category": "QuickMark"
+      },
+      {
+        "command": "quickmark.moveToTeam",
+        "title": "Move to Team",
+        "category": "QuickMark"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "quickmark.addPersonalBookmark",
+          "when": "view == quickmark.personalBookmarks",
+          "group": "navigation@1"
+        },
+        {
+          "command": "quickmark.createPersonalGroup",
+          "when": "view == quickmark.personalBookmarks",
+          "group": "navigation@2"
+        },
+        {
+          "command": "quickmark.refreshPersonal",
+          "when": "view == quickmark.personalBookmarks",
+          "group": "navigation@3"
+        },
+        {
+          "command": "quickmark.addTeamBookmark",
+          "when": "view == quickmark.teamBookmarks",
+          "group": "navigation@1"
+        },
+        {
+          "command": "quickmark.createTeamGroup",
+          "when": "view == quickmark.teamBookmarks",
+          "group": "navigation@2"
+        },
+        {
+          "command": "quickmark.refreshTeam",
+          "when": "view == quickmark.teamBookmarks",
+          "group": "navigation@3"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "quickmark.openBookmark",
+          "when": "viewItem =~ /^bookmark/",
+          "group": "inline@1"
+        },
+        {
+          "command": "quickmark.editBookmark",
+          "when": "viewItem =~ /^bookmark-(file|url)$/",
+          "group": "inline@2"
+        },
+        {
+          "command": "quickmark.removeBookmark",
+          "when": "viewItem =~ /^bookmark/",
+          "group": "inline@3"
+        },
+        {
+          "command": "quickmark.editBookmark",
+          "when": "viewItem =~ /^bookmark-(file|url)$/",
+          "group": "1_edit@1"
+        },
+        {
+          "command": "quickmark.moveToPersonal",
+          "when": "viewItem =~ /^bookmark/ && view == quickmark.teamBookmarks",
+          "group": "1_edit@2"
+        },
+        {
+          "command": "quickmark.moveToTeam",
+          "when": "viewItem =~ /^bookmark/ && view == quickmark.personalBookmarks",
+          "group": "1_edit@2"
+        },
+        {
+          "command": "quickmark.removeBookmark",
+          "when": "viewItem =~ /^bookmark/",
+          "group": "2_delete@1"
+        },
+        {
+          "command": "quickmark.renameGroup",
+          "when": "viewItem == bookmark-group",
+          "group": "inline@1"
+        },
+        {
+          "command": "quickmark.removeGroup",
+          "when": "viewItem == bookmark-group",
+          "group": "inline@2"
+        },
+        {
+          "command": "quickmark.renameGroup",
+          "when": "viewItem == bookmark-group",
+          "group": "1_edit@1"
+        },
+        {
+          "command": "quickmark.removeGroup",
+          "when": "viewItem == bookmark-group",
+          "group": "2_delete@1"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "quickmark.addBookmarkFromExplorer",
+          "group": "7_quickmark"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "quickmark.addBookmark",
+          "when": "true"
+        },
+        {
+          "command": "quickmark.searchBookmarks",
+          "when": "true"
+        },
+        {
+          "command": "quickmark.createGroup",
+          "when": "true"
+        },
+        {
+          "command": "quickmark.addPersonalBookmark",
+          "when": "false"
+        },
+        {
+          "command": "quickmark.addTeamBookmark",
+          "when": "false"
+        },
+        {
+          "command": "quickmark.createPersonalGroup",
+          "when": "false"
+        },
+        {
+          "command": "quickmark.createTeamGroup",
+          "when": "false"
+        },
+        {
+          "command": "quickmark.removeBookmark",
+          "when": "false"
+        },
+        {
+          "command": "quickmark.editBookmark",
+          "when": "false"
+        },
+        {
+          "command": "quickmark.openBookmark",
+          "when": "false"
+        },
+        {
+          "command": "quickmark.removeGroup",
+          "when": "false"
+        },
+        {
+          "command": "quickmark.renameGroup",
+          "when": "false"
+        },
+        {
+          "command": "quickmark.refreshPersonal",
+          "when": "false"
+        },
+        {
+          "command": "quickmark.refreshTeam",
+          "when": "false"
+        },
+        {
+          "command": "quickmark.moveToPersonal",
+          "when": "false"
+        },
+        {
+          "command": "quickmark.moveToTeam",
+          "when": "false"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "QuickMark",
+      "properties": {
+        "quickmark.personalBookmarks": {
+          "type": "object",
+          "default": {
+            "groups": [],
+            "bookmarks": []
+          },
+          "description": "Personal bookmarks stored in VS Code settings.",
+          "scope": "window"
+        },
+        "quickmark.personalStorageScope": {
+          "type": "string",
+          "enum": [
+            "workspace",
+            "global"
+          ],
+          "default": "workspace",
+          "description": "Where to store personal bookmarks: 'workspace' (.vscode/settings.json) or 'global' (user settings)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node esbuild.mjs",
+    "watch": "node esbuild.mjs --watch",
+    "package": "vsce package",
+    "lint": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.3.0",
+    "esbuild": "^0.20.0",
+    "@vscode/vsce": "^2.22.0"
+  }
+}
