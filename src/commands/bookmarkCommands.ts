@@ -89,7 +89,13 @@ export function registerBookmarkCommands(
       }
 
       if (b.type === 'url') {
-        await vscode.env.openExternal(vscode.Uri.parse(b.target));
+        // Try to open in VS Code's simple browser if available
+        try {
+          await vscode.commands.executeCommand('simpleBrowser.show', b.target);
+        } catch (err) {
+          // Fallback: open in external browser
+          await vscode.env.openExternal(vscode.Uri.parse(b.target));
+        }
       } else {
         const folders = vscode.workspace.workspaceFolders;
         if (folders && folders.length > 0) {
