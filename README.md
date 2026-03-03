@@ -2,6 +2,10 @@
 
 > Bookmark manager for VS Code — store, organize, and share project bookmarks (files & URLs) with your team, right from the editor.
 
+## Overview
+
+[![Quick Mark Bookmarks VS Code extension- demo](./media/QuickMarkBookmarksVSCodeExtension.png)](https://youtu.be/yVEOKb1dW2s)
+
 ## Why QuickMark?
 
 Every project has dependencies beyond code: task lists, project management tools, documentation portals, CI/CD dashboards, design systems, and more. Typically you share these links via READMEs, wikis, or chat pinned messages — forcing context switches to the browser.
