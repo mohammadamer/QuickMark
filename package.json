@@ -3,8 +3,16 @@
   "displayName": "QuickMark",
   "description": "Bookmark manager for VS Code — store, organize, and share project bookmarks (files & URLs) with your team, right from the editor.",
   "version": "0.1.0",
-  "publisher": "quickmark",
+  "publisher": "Mohammad Amer",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mohammadamer/QuickMark.git"
+  },
+  "homepage": "https://github.com/mohammadamer/QuickMark",
+  "bugs": {
+    "url": "https://github.com/mohammadamer/QuickMark/issues"
+  },
   "engines": {
     "vscode": "^1.85.0"
   },
@@ -18,7 +26,7 @@
     "team",
     "productivity"
   ],
-  "icon": "media/icon.png",
+  "icon": "media/QuickMarkBookmarksVSCodeExtension.png",
   "activationEvents": [
     "onStartupFinished"
   ],
@@ -337,6 +345,8 @@
     "build": "node esbuild.mjs",
     "watch": "node esbuild.mjs --watch",
     "package": "vsce package",
+    "package:vsix": "vsce package",
+    "prepublishOnly": "npm run build",
     "lint": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest"
