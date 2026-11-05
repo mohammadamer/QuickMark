@@ -1,4 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-  <path fill="#C5C5C5" d="M5 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8l-6-6H5zm0 1.5h8.5V8a1 1 0 0 0 1 1H19v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V4A.5.5 0 0 1 5 3.5zM15 4.12 18.38 7.5H15V4.12z"/>
-  <path fill="#569CD6" d="M12 10.5l-3.5 4h2.25V19h2.5v-4.5h2.25L12 10.5z"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="128px" height="128px" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="vsBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#007ACC"/>
+            <stop offset="100%" stop-color="#005A9E"/>
+        </linearGradient>
+        <linearGradient id="bookmarkGold" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FFD166"/>
+            <stop offset="100%" stop-color="#F4A261"/>
+        </linearGradient>
+    </defs>
+    
+    <!-- File Outline Container -->
+    <rect x="20" y="10" width="88" height="108" rx="12" fill="none" stroke="#888888" stroke-width="4"/>
+    <!-- Folded corner -->
+    <path d="M 80 10 L 108 38 L 108 10 Z" fill="none" stroke="#888888" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M 80 10 L 80 38 L 108 38" fill="none" stroke="#888888" stroke-width="4" stroke-linejoin="round"/>
+
+    <!-- Bookmark shape overlapping the VS Code ribbon style -->
+    <path d="M 54 44 L 74 44 L 74 88 L 64 78 L 54 88 Z" fill="url(#bookmarkGold)" opacity="0.95"/>
+
+    <!-- VS Code Ribbon Logo shape -->
+    <path d="M 43 51 L 65 64 L 84 48 L 84 80 L 65 64 L 43 77 Z" fill="url(#vsBlue)"/>
+    <path d="M 65 64 L 84 80 L 73 87 L 54 74 Z" fill="#1F425F" opacity="0.7"/>
+
+    <!-- Small indicators at the bottom representing Files, URLs, Team Sharing -->
+    <g transform="translate(38, 96) scale(0.7)">
+        <!-- File Icon -->
+        <rect x="0" y="0" width="12" height="16" fill="none" stroke="#007ACC" stroke-width="2"/>
+        <line x1="3" y1="5" x2="9" y2="5" stroke="#007ACC" stroke-width="2"/>
+        <line x1="3" y1="9" x2="9" y2="9" stroke="#007ACC" stroke-width="2"/>
+    </g>
+    <g transform="translate(58, 96) scale(0.7)">
+        <!-- Link / URL Icon -->
+        <path d="M 3 8 A 3 3 0 0 1 7 5 L 11 5 A 3 3 0 0 1 11 11 L 9 11" fill="none" stroke="#007ACC" stroke-width="2"/>
+        <path d="M 13 8 A 3 3 0 0 1 9 11 L 5 11 A 3 3 0 0 1 5 5 L 7 5" fill="none" stroke="#007ACC" stroke-width="2"/>
+    </g>
+    <g transform="translate(78, 96) scale(0.7)">
+        <!-- Team / Share Icon -->
+        <circle cx="5" cy="4" r="3" fill="#007ACC"/>
+        <path d="M 1 13 C 1 10 3 9 5 9 C 7 9 9 10 9 13" fill="none" stroke="#007ACC" stroke-width="2"/>
+    </g>
 </svg>
