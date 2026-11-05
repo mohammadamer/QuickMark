@@ -1,6 +1,6 @@
 {
-  "name": "quickmark",
-  "displayName": "QuickMark",
+  "name": "quickmarkBookmark",
+  "displayName": "Quick Mark",
   "description": "Bookmark manager for VS Code — store, organize, and share project bookmarks (files & URLs) with your team, right from the editor.",
   "version": "0.0.1",
   "publisher": "MohammadAhmedAmer",
